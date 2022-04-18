@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_salary_rule_form_attendance" model="ir.ui.view">
+        <field name="name">hr.salary.rule.form.attendance</field>
+        <field name="model">hr.salary.rule</field>
+        <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='amount_fix']" position="after">
+                    <field name='attendance_rule' invisible="1"/>
+                    <separator string="Hour Price Lines" attrs="{'invisible': [('attendance_rule', '=', False)]}"/>
+                    <field name="hour_price_lines" attrs="{'invisible': [('attendance_rule', '=', False)]}" nolabel='1'>
+                        <tree editable='bottom'>
+                            <field name='start'/>
+                            <field name='end'/>
+                            <field name='amount'/>
+                        </tree>
+                    </field>
+                </xpath>
+            </data>
+        </field>
+    </record>
+</odoo>
